@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './krouter'
+import store from './store'
+// import router from './router'
 import Notice from '@/components/Notice.vue'
 import create from '@/util/create'
-import store from './store'
 
 Vue.prototype.$notice = function (props) {
   create(Notice,props).show()
