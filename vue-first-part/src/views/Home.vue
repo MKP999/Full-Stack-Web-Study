@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <div @click="$store.commit('add', 10)">{{$store.state.counter}}</div>
+    <div @click="$store.dispatch('asyncAdd', 10)">{{$store.state.counter}}</div>
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
