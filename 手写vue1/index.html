@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <!-- <script src="./defineProperty.js"></script> -->
+    <script>
+        function defineReactive(obj, key, value) {
+
+            Object.defineProperty(obj, key, {
+                get() {
+                    console.log('get', value)
+                    return value
+                },
+                set(newValue) {
+                    if (newValue !== value) {
+                        value = newValue
+                        console.log('set', newValue)
+                        // 更新函数
+                        update()
+                    }
+                }
+            })
+        }
+
+        const obj = {}
+        defineReactive(obj, 'foo', 'foo')
+
+        function update() {
+            app.innerHTML = obj.foo
+        }
+
+        setInterval(() => {
+            obj.foo = new Date().toLocaleTimeString()
+        }, 1000)
+
+
+    </script>
+</body>
+</html>
